@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			if (list.length)
+				each item in list
+					.col-md-4
+						.thumbnail
+							a
+								img.img-rounded(src="#{item.imgUrl}", alt="#{item.name}")
+							.caption
+								h4 #{item.name}	
+								p=item.birth
+								p=item.other
+								p.center-block 
+									a.btn.btn-primary(href="/detail/#{item._id}", role="button") 查看详情
+			else 
+				p 暂无数据
+
+		
+		

@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.table-responsive
+				table.table.table-hover.table-bordered.table-condensed
+					thead
+						tr
+							th.col-md-1 人物名字
+							th.col-md-1 生日
+							th.col-md-1 修改时间
+							th.col-md-5 详细描述
+							th.col-md-1 查看
+							th.col-md-1 更新
+							th.col-md-1 删除
+					tbody
+						each item in list
+							tr
+								td #{item.name}
+								td #{item.birth}
+								td #{moment(item.meta.updateTime).format("YYYY/MM/DD")}
+								td #{item.description}
+								td
+									a.center-block.btn.btn-primary(href="/detail/#{item._id}") 查看
+								td
+									a.center-block.btn.btn-warning(href="/admin/update/#{item._id}") 修改
+								td
+									a.center-block.btn.btn-danger.delete(data-nid="#{item._id}") 删除
+								
+	script(src="/js/list.js")								
+
+
